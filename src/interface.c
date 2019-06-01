@@ -18,7 +18,15 @@ Args *newArgs() {
   args->h   = 0;
   args->v   = 0;
   args->err = 0;
-  args->i   = DEFAULT_I;
+
+  args->d   = DEFAULT_D;
+  args->s   = 0.;
+  args->u   = 0;
+  args->r   = 0;
+  args->n   = 0;
+  args->l   = 0;
+  args->a   = 0;
+  
   return args;
 }
 
@@ -28,13 +36,31 @@ void freeArgs(Args *args) {
 
 Args *getArgs(int argc, char *argv[]) {
   int c;
-  char *optString = "hvi:";
+  char *optString = "hvurnlad:s:";
   Args *args = newArgs();
 
   while ((c = getopt(argc, argv, optString)) != -1) {
     switch(c) {
-    case 'i': /* iterations */
-      args->i = atoi(optarg);
+    case 'd': /* dimension */
+      args->d = atof(optarg);
+      break;
+    case 's': /* scale */
+      args->s = atof(optarg);
+      break;
+    case 'u': /* unrooted */
+      args->u = 1;
+      break;
+    case 'r': /* rooted */
+      args->r = 1;
+      break;
+    case 'n': /* no labels */
+      args->n = 1;
+      break;
+    case 'l': /* id labels */
+      args->l = 1;
+      break;
+    case 'a': /* latex */
+      args->a = 1;
       break;
     case 'h': /* help       */
       args->h = 1;
@@ -66,9 +92,16 @@ void printUsage() {
   printf("<DESCRIPTION>\n");
   printf("Example: %s -i 2\n", progname());
   printf("Options:\n");
-  printf("\t[-i <NUM> iterations; default: %d]\n", DEFAULT_I);
+  printf("\t[-d <NUM> smallest dimension (in cm); default: %.1f]\n", DEFAULT_D);
+  printf("\t[-s <NUM> scale; default: find automatically]\n");
+  printf("\t[-S no scale; default: print scale]\n");
+  printf("\t[-u draw unrooted tree; default: let input decide]\n");
+  printf("\t[-r draw rooted tree; default: let input decide]\n");
+  printf("\t[-n no labels; default: print labels]\n");
+  printf("\t[-l id labels; default: print text labels]\n");
+  printf("\t[-a print LaTeX output; default: generate image]\n");
   printf("\t[-h print this help message and exit]\n");
-  printf("\t[-v print version & program information and exit]\n");
+  printf("\t[-v print program information and exit]\n");
   exit(0);
 }
 

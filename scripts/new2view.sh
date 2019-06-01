@@ -1,5 +1,5 @@
-./new2view > tmp.out
-DIFF=$(diff tmp.out ../data/new2view.out)
+./new2view -a ../data/primates.nwk > tmp.out
+DIFF=$(diff tmp.out ../data/primates.tex)
 if [ "$DIFF" == "" ] 
 then
     printf "Test(new2view)\tpass\n"

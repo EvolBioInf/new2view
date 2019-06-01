@@ -15,14 +15,53 @@
 \textheight=23cm
 \begin{document}
 
-\title{\texttt{new2view} \input{version}: \emph{Description}}
+\title{\texttt{new2view} \input{version}: Visualize Phylogenies}
 \author{\input{author}}
 \input{date}
 \date{\displaydate{tagDate}}
 \maketitle
 
-\section{Introduction} 
-\emph{Introduction}
+\section{Introduction}
+The program \texttt{new2view} draws phylogenetic trees specified in
+the ``Newick'' format. This is a human-readable notation for
+phylogenetic trees; a tree with tree taxa, $A$, $B$, and $C$, is
+written like this
+\begin{center}
+\texttt{((A,B),C);}
+\end{center}
+The leaves are denoted by their labels, while internal nodes are
+denoted by round brackets; the root node is followed by a
+semi-colon. When drawn with \texttt{new2view} it looks like in
+Figure~\ref{fig:phy}A. This tree contains no explicit branch lengths,
+so all branches are drawn with length 1. Branch lengths can be added
+by writing a colon to the right of a node marker, followed by the
+distance from that node to its parent, for example,
+\begin{center}
+  \texttt{((A:0.2,B:0.25):1,C:1.2);}
+\end{center}
+\texttt{New2view} converts this to Figure~\ref{fig:phy}B.
+
+In addition to distances, individual nodes can also be labeled, for
+example with support values. Say the parent node of $A$ and $B$ in our
+example tree has support value 98, then we write this in square
+brackets behind the node marker
+\begin{center}
+  \texttt{((A:0.2,B:0.25)[98]:1,C:1.2);}
+\end{center}
+which \texttt{new2view} converts to Figure~\ref{fig:phy}C.
+\begin{figure}
+  \begin{center}
+    \begin{tabular}{ccc}
+      \textbf{A} & \textbf{B} & \textbf{C}\\
+\texttt{((A,B),C);} & \texttt{((A:0.2,B:0.25):1,C:1.2);} & \texttt{((A:0.2,B:0.25)[98]:1,C:1.2);}\\\\
+\input{test1} & \input{test2} & \input{test3}
+    \end{tabular}
+  \end{center}
+  \caption{Three example trees drawn with
+    \texttt{new2view}. (\textbf{A}) has no explicit branch lengths, while
+    (\textbf{B}) does have them; (\textbf{C}) differs from
+    (\textbf{B}) by the addition of the support value \emph{98}.}\label{fig:phy}
+\end{figure}
 
 \section{Getting Started}
 The program \texttt{new2view} was written in C on a computer running Linux.

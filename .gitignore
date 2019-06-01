@@ -1,6 +1,9 @@
 build/
 *.o
 *.a
+common/lex.yy.c
+common/y.tab.h
+common/y.tab.c
 doc/*.aux
 doc/*.dvi
 doc/*.log

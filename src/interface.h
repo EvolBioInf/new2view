@@ -8,16 +8,23 @@
 #ifndef INTERFACE
 #define INTERFACE
 
-#define DEFAULT_I 1
+#define DEFAULT_D 10. /* default min. dim. */
 
 /* define argument container */
 typedef struct args{
   char    h; /* help message?         */
   char    v; /* version message?      */
   char  err; /* error                 */
-  int     i; /* iterations            */
   char **fi; /* input files           */
   int    nf; /* number of input files */
+
+  float   d; /* dimension             */
+  float   s; /* scale                 */
+  char    u; /* unrooted              */
+  char    r; /* rooted                */
+  char    n; /* no labels             */
+  char    l; /* id labels             */
+  char    a; /* latex output          */
 } Args;
 
 Args *getArgs(int argc, char *argv[]);
