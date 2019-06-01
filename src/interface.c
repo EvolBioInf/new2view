@@ -89,8 +89,8 @@ Args *getArgs(int argc, char *argv[]) {
 
 void printUsage() {
   printf("Usage: %s [options] [inputFiles]\n", progname());
-  printf("<DESCRIPTION>\n");
-  printf("Example: %s -i 2\n", progname());
+  printf("Visualize phylogeny\n");
+  printf("Example: %s foo.nwk\n", progname());
   printf("Options:\n");
   printf("\t[-d <NUM> smallest dimension (in cm); default: %.1f]\n", DEFAULT_D);
   printf("\t[-s <NUM> scale; default: find automatically]\n");
