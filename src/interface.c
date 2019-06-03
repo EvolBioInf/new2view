@@ -20,7 +20,7 @@ Args *newArgs() {
   args->err = 0;
 
   args->d   = DEFAULT_D;
-  args->s   = 0.;
+  args->s   = -1.;
   args->u   = 0;
   args->r   = 0;
   args->n   = 0;
@@ -94,7 +94,6 @@ void printUsage() {
   printf("Options:\n");
   printf("\t[-d <NUM> smallest dimension (in cm); default: %.1f]\n", DEFAULT_D);
   printf("\t[-s <NUM> scale; default: find automatically]\n");
-  printf("\t[-S no scale; default: print scale]\n");
   printf("\t[-u draw unrooted tree; default: let input decide]\n");
   printf("\t[-r draw rooted tree; default: let input decide]\n");
   printf("\t[-n no labels; default: print labels]\n");

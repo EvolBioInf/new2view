@@ -62,6 +62,7 @@ void printLatex(Node *np, char *fn, Args *args){
   if(args->l)
     fprintf(fp,"\\psset{nodesep=2pt}\n");
   scalePos(np,scale);
+  writeScale(fp,args,np);
   writeNodes(np,args,fp);
   writeEdges(np,fp,args);
   fprintf(fp,"\\end{pspicture}\n");
@@ -118,8 +119,8 @@ void writeScale(FILE *fp, Args *args, Node *np){
     scale = args->s;
   if(scale > 0){
     l = paperDist*scale/evolDist;
-    fprintf(fp,"\\psline(%f,%f)(%f,%f)\n",maxX-l,maxY+0.2,maxX,maxY+0.2);
-    fprintf(fp,"\\rput(%f,%f){%g}\n",maxX-l/2.,maxY+0.4,scale);
+    fprintf(fp,"\\psline(%f,%f)(%f,%f)\n",maxX-l,maxY+0.4,maxX,maxY+0.4);
+    fprintf(fp,"\\rput(%f,%f){%g}\n",maxX-l/2.,maxY+0.6,scale);
   }
   free(md);
 }
