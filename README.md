@@ -4,10 +4,9 @@ Bernhard Haubold, `haubold@evolbio.mpg.de`
 ## Description
 Visualize trees in [Newick](http://evolution.genetics.washington.edu/phylip/newicktree.html) format.
 ## Dependencies
-* flex
-* bison
-* latex
-  * pstricks
+* `flex`
+* `bison`
+* `latex`  with package `pstricks`  
 ## Compile
 Compile the sources using `make`; the executable `new2view` is now in the directory `build`
 ## Documentation

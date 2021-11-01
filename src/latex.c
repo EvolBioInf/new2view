@@ -71,10 +71,10 @@ void printLatex(Node *np, char *fn, Args *args){
     fp = fdopen(mkstemp(wf),"w");
     printWrapper(fp, fn, of);
     fclose(fp);
-    sprintf(buf,"latex -output-directory=/tmp -interaction=batchmode %s >/dev/null; dvips  %s -o %s.ps -q; gv %s.ps &",wf,wf,wf,wf);
+    sprintf(buf,"latex -output-directory=/tmp -interaction=batchmode %s >/dev/null; dvips  %s -o %s.ps -q; evince %s.ps &",wf,wf,wf,wf);
     if(system(buf)){
       printf("ERROR: %s\n",buf);
-      printf("ERROR: please make sure that the programs latex and gv are installed.\n");
+      printf("ERROR: please make sure that the programs latex and evince are installed.\n");
       exit(-1);
     }
   }
@@ -183,6 +183,7 @@ void printWrapper(FILE *fp, char *fn, char *wrappedFile){
   fprintf(fp,"\\usepackage{times}\n");
   fprintf(fp,"\\usepackage{pstricks,pst-node}\n");
   fprintf(fp,"\\pagestyle{empty}\n");
+  fprintf(fp, "\\pagenumbering{gobble}\n");
   fprintf(fp,"\\oddsidemargin=0cm\n");
   fprintf(fp,"\\evensidemargin=0cm\n");
   fprintf(fp,"\\headheight=0cm\n");
